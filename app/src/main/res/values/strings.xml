@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">My TripActions</string>
+    <string name="title_news">News</string>
+    <string name="breaking">Breaking</string>
+    <string name="search">Search</string>
+    <string name="bookmarks">Bookmarks</string>
+    <string name="retry">Retry</string>
+    <string name="refresh">Refresh</string>
+    <string name="no_bookmarks">No bookmarks</string>
+    <string name="no_results_found">No results found</string>
+</resources>

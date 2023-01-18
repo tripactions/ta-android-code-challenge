@@ -1,6 +1,5 @@
 package com.example.mytripactions.api
 
-import com.example.mytripactions.BuildConfig
 import io.reactivex.rxjava3.core.Observable
 import retrofit2.Call
 import retrofit2.http.GET

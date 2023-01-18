@@ -1,7 +1,8 @@
 package com.example.mytripactions.viewmodel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.example.mytripactions.data.NewsArticle
 import com.example.mytripactions.repository.NewsRepository
@@ -13,11 +14,11 @@ class MainActivityViewModel @Inject constructor(
     private val repository: NewsRepository
 ) : ViewModel() {
 
-    private val _data: MutableLiveData<List<NewsArticle>> = MutableLiveData()
-    val data: LiveData<List<NewsArticle>> get() = _data
+    var uiState: UIState by mutableStateOf(UIState.Loading)
+        private set
 
     init {
-        _data.value = listOf<NewsArticle>(
+        val newsArticles = listOf<NewsArticle>(
             NewsArticle(
                 "My first article",
                 "no-url-link",
@@ -34,5 +35,13 @@ class MainActivityViewModel @Inject constructor(
                 null
             )
         )
+
+        uiState = UIState.OnDataLoaded(newsArticles)
+    }
+
+    sealed class UIState {
+        object Loading : UIState()
+        class OnDataLoaded(val data: List<NewsArticle>) : UIState()
+        class OnError(val throwable: Throwable) : UIState()
     }
 }

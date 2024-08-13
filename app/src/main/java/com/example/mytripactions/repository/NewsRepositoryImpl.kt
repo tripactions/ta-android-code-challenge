@@ -10,12 +10,4 @@ class NewsRepositoryImpl(private val newsApi: NewsApi) : NewsRepository {
     override suspend fun getNews(): NewsResponse {
         TODO("empty function for now")
     }
-
-    override fun getNewsObservable(): Observable<NewsResponse> {
-        TODO("empty function for now")
-    }
-
-    override fun getNewsCall(): Call<NewsResponse> {
-        TODO("empty function for now")
-    }
 }

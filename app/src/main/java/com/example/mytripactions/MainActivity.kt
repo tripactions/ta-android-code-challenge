@@ -1,26 +1,25 @@
 package com.example.mytripactions
 
 import android.os.Bundle
+import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import com.example.mytripactions.databinding.ActivityMainBinding
-import com.example.mytripactions.fragments.NewsListFragment
+import androidx.compose.material.Text
+import androidx.compose.ui.res.stringResource
+import com.example.mytripactions.compose.TATheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
-    private lateinit var fragment: NewsListFragment
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        fragment = NewsListFragment()
-
-        val transaction = supportFragmentManager.beginTransaction()
-        transaction.add(R.id.fragment_container, fragment, "news_list")
-        transaction.commit()
+        setContent {
+            TATheme {
+                // TODO
+                Text(
+                    text = stringResource(id = R.string.app_name)
+                )
+            }
+        }
     }
 }
